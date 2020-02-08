@@ -3,6 +3,7 @@ const candiateModel = require('../model/candiate');
 module.exports = {
 
     async DeleteCandiate(req, res) {
+        
         let candiateid = req.body.id;
 
         candiateModel.findByIdAndDelete(candiateid).then(function () {
