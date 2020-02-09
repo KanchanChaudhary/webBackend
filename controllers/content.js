@@ -10,6 +10,7 @@ module.exports = {
             contenttype: contenttype,
             title: title,
             description: description
+            
         })
 
         addContent.save().then(function () {
