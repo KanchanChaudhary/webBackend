@@ -2,6 +2,7 @@ const contactModel = require('../model/contact')
 
 module.exports = {
 
+    
     async Addcontact(req, res) {
 
         let name = req.body.name;
