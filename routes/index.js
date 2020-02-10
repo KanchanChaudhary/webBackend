@@ -6,3 +6,4 @@ app.get('/', function (req, res) {
 
 app.use('/user', require('./user'))
 app.use('/content', require('./content'))
+app.use('/candiate', require('./candiate'))

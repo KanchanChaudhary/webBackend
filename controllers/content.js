@@ -66,7 +66,7 @@ module.exports = {
         })
     },
 
-    async DeleteContent() {
+    async DeleteContent(req, res) {
 
         let contentid = req.body.id;
 
