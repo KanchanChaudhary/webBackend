@@ -1,6 +1,7 @@
 const voteModel = require('../model/voting');
 
 module.exports = {
+
     async addvote(req, res) {
         let partyname = req.body.partyname;
         let candiatename = req.body.candiatename
