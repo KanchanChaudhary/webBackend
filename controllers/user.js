@@ -3,7 +3,9 @@ const jwt = require('jsonwebtoken');
 const config= require('../config')
 
 
+ 
 module.exports = {
+    
     async RegisterUser(req, res) {
 
         let name = req.body.name;
