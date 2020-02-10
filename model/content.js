@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const contentSchema = new mongoose.Schema({
-    contenttitle: {
+    contenttype: {
         type: String
     },
     title: {
         type: String
     },
-    content: {
+    description: {
         type: String
     }
 })
