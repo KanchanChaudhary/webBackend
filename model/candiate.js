@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const candiateSchema = new mongoose.Schema({
     partyname: {
         type: String
