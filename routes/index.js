@@ -9,3 +9,4 @@ app.use('/content', require('./content'))
 app.use('/candiate', require('./candiate'))
 app.use('/vote', require('./voting'));
 app.use('/contact', require('./contact'));
+app.use('/comment', require('./comment'));
