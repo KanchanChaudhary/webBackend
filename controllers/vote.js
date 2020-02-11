@@ -1,40 +1,48 @@
-const contentModel = require('../model/content');
+const voteModel = require('../model/voting');
 
 module.exports = {
-    async addContent(req, res) {
-        let contenttype = req.body.contenttype;
-        let title = req.body.title;
-        let description = req.body.description;
+    async addvote(req, res) {
+        let partyname = req.body.partyname;
+        let candiatename = req.body.candiatename
+        let candiateid = req.body.candiateid
+        let userid = req.body.userid;
+        let username = req.body.username;
+        let useremail = req.body.useremail;
+        let image = req.body.image;
 
-        let addContent = new contentModel({
-            contenttype: contenttype,
-            title: title,
-            description: description
+        let addvote = new voteModel({
+            partyname: partyname,
+            candiatename: candiatename,
+            image: image,
+            candiateid: candiateid,
+            userid: userid,
+            username: username,
+            useremail: useremail
         })
 
-        addContent.save().then(function () {
+        addvote.save().then(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
                 added: true,
-                message: contenttype + ' added',
+                message: 'You voted ' + candiatename,
             }, null, 3));
         }).catch(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
                 added: false,
-                message: 'Failed to add ' + contenttype,
+                message: 'Failed to cast vote',
             }, null, 3));
         })
 
     },
 
-    async getAllContent(req, res) {
-        contentModel.find().then(function (contentData) {
+    async getAllvote(req, res) {
+        voteModel.find().then(function (voteData) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
                 selected: true,
-                message: 'Content selected',
-                data: contentData
+                message: 'vote selected',
+                data: voteData
             }, null, 3));
         }).catch(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -45,18 +53,17 @@ module.exports = {
         })
     },
 
-    async getSingleContent(req, res) {
-        let contenttype = req.params.contenttype;
+    async getSinglevote(req, res) {
+        let votetype = req.params.votetype;
 
-
-        contentModel.find({
-            contenttype: contenttype
-        }).then(function (contentData) {
+        voteModel.find({
+            votetype: votetype
+        }).then(function (voteData) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
                 selected: true,
-                message: 'Content selected',
-                data: contentData
+                message: 'vote selected',
+                data: voteData
             }, null, 3));
         }).catch(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -67,15 +74,15 @@ module.exports = {
         })
     },
 
-    async DeleteContent(req, res) {
+    async Deletevote(req, res) {
 
-        let contentid = req.body.id;
+        let voteid = req.body.id;
 
-        contentModel.findByIdAndDelete(contentid).then(function () {
+        voteModel.findByIdAndDelete(voteid).then(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
                 deleted: true,
-                message: 'Content deleted',
+                message: 'vote deleted',
             }, null, 3));
         }).catch(function () {
             res.writeHead(200, { 'Content-Type': 'application/json' });

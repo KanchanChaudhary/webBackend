@@ -1,7 +1,8 @@
 const app = module.exports = require('express')();
 let multer = require('multer');
 let path = require('path')
-let candiateController = require('../model/candiate')
+let candiateModel = require('../model/candiate')
+let candiateController = require('../controllers/candiate')
 
 var ImagefileName = '';
 var storage = multer.diskStorage({
@@ -32,14 +33,13 @@ var upload = multer({
 
 app.post('/', upload.single('image'), function (req, res) {
 
-    console.log(req.body);
-    console.log(ImagefileName)
+    console.log(req.body)
 
     let partyname = req.body.partyname;
-    let candiatenname = req.body.candiatenname;
+    let candiatenname = req.body.candiatename;
     let image = ImagefileName;
 
-    AddDrink = new candiateController({
+    AddDrink = new candiateModel({
         candiatenname: candiatenname,
         partyname: partyname,
         image: image
@@ -58,7 +58,8 @@ app.post('/', upload.single('image'), function (req, res) {
             message: 'Something went wrong please try again'
         }, null, 3));
     })
-
-
-
 })
+
+
+app.get('/', candiateController.getAllCandiate)
+app.delete('/', candiateController.DeleteCandiate)
