@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const votingSchema = new mongoose.Schema({
     partyname: {
+        
         type: String
     },
     candiatename: {
