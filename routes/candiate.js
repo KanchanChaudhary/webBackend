@@ -4,6 +4,8 @@ let path = require('path')
 let candiateModel = require('../model/candiate')
 let candiateController = require('../controllers/candiate')
 
+
+ 
 var ImagefileName = '';
 var storage = multer.diskStorage({
     destination: 'asset/uploads/images/candiate',
