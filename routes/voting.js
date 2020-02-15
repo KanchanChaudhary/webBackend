@@ -3,3 +3,5 @@ let votingController= require('../controllers/vote')
 
 app.post('/', votingController.addvote);
 app.get('/', votingController.getAllvote);
+
+
